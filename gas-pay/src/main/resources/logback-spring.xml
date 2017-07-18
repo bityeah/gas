@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="containerAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/Users/kascend1/workspace/logs/gas.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>/Users/kascend1/workspace/logs/gas.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger:%L - %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="payAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/Users/kascend1/workspace/logs/pay.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>/Users/kascend1/workspace/logs/pay.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger:%L - %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 应用服务级 -->
+
+    <logger name="cn.demo.gas.pay" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="payAppender"/>
+    </logger>
+
+
+    <!-- 容器级日志 -->
+    <root>
+        <level value="WARN"/>
+        <appender-ref ref="containerAppender"/>
+    </root>
+
+</configuration>
