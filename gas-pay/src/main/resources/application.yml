@@ -7,16 +7,15 @@ server:
     sessionTimeout: 30
     contextPath: /
 
-
-# 配置文档参见 http://t.cn/RVUkLNl
-mybatis:
-    typeAliasesPackage: cn.demo.gas.pay.model
-    configLocation: classpath:mybatis-config.xml
-    mapperLocations: classpath:mybatis/*.xml
-
 spring:
     datasource:
-        driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/junping
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/gas0
+        username: root
+        password: 123456
+
+    second-datasource:
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/gas1
         username: root
         password: 123456
