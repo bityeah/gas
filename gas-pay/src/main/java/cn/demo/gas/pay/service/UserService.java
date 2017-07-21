@@ -26,7 +26,7 @@ public class UserService {
 
         Random random = new Random();
 
-        for (int i = 0; i < 10000000; i++) {
+        for (int i = 0; i < 10; i++) {
             String username = firstName[random.nextInt(firstName.length)] + name[random.nextInt(name.length)];
             User user = new User(username, username, random.nextInt(2), "18657922592", 0, 0, "address");
             userMapper.insertUser(user);
@@ -41,7 +41,7 @@ public class UserService {
 
     public void addRecharge() {
 
-        int k = 1000000;
+        int k = 10;
 
         for (int i = 1; i < 1001; i++) {
             new Thread(new ThreadA((i - 1) * k, i * k, userMapper)).start();
@@ -68,7 +68,7 @@ class ThreadA implements Runnable {
     @Override
     public void run() {
         for (int i = start; i < end; i++) {
-            Recharge recharge = new Recharge(i, random.nextInt(1000000));
+            Recharge recharge = new Recharge(i, random.nextInt(10));
             userMapper.insertRecharge(recharge);
         }
     }
