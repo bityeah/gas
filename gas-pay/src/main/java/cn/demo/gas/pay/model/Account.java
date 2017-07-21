@@ -1,44 +1,64 @@
 package cn.demo.gas.pay.model;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+
 /**
  * Created by huangjp on 2017/7/18.
  */
 public class Account {
 
-    private int id;
-    private String username;
-    private int age;
+    private int uid;
+    private BigDecimal balance;
+    private int type;
+    private Timestamp createTime;
 
-    public int getId() {
-        return id;
+    public Account(int uid, BigDecimal balance, int type) {
+        this.uid = uid;
+        this.balance = balance;
+        this.type = type;
+        this.createTime = new Timestamp(System.currentTimeMillis());
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getUid() {
+        return uid;
     }
 
-    public String getUsername() {
-        return username;
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public int getAge() {
-        return age;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
     @Override
     public String toString() {
         return "Account{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", age=" + age +
+                "uid=" + uid +
+                ", balance=" + balance +
+                ", type=" + type +
+                ", createTime=" + createTime +
                 '}';
     }
 }

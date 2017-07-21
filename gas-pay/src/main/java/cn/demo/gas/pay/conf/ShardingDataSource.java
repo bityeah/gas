@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,28 +33,54 @@ public class ShardingDataSource {
     @Qualifier("secondDataSource")
     private DataSource secondDataSource;
 
+    @Resource
+    @Qualifier("threeDataSource")
+    private DataSource threeDataSource;
+
+    @Resource
+    @Qualifier("fourDataSource")
+    private DataSource fourDataSource;
+
+    @Resource
+    @Qualifier("fiveDataSource")
+    private DataSource fiveDataSource;
+
     private DataSource shardingDataSource;
 
     @PostConstruct
     public void init() {
 
-        Map<String, DataSource> map = new HashMap<>(2);
+        Map<String, DataSource> map = new HashMap<>(5);
         map.put("gas0", primaryDataSource);
         map.put("gas1", secondDataSource);
+        map.put("gas2", threeDataSource);
+        map.put("gas3", fourDataSource);
+        map.put("gas4", fiveDataSource);
 
         DataSourceRule dataSourceRule = new DataSourceRule(map);
         List<TableRule> tableRuleList = new ArrayList<>();
-        List<String> pList = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            pList.add("order" + i);
-        }
-        tableRuleList.add(new TableRule.TableRuleBuilder("order").actualTables(pList).dataSourceRule(dataSourceRule)
-                .tableShardingStrategy(new TableShardingStrategy("id", new ModuloTableShardingAlgorithm())).build());
 
-        ShardingRule shardingRule = ShardingRule.builder().dataSourceRule(dataSourceRule)
-                .databaseShardingStrategy(
-                        new DatabaseShardingStrategy("uid", new ModuloDatabaseShardingAlgorithm()))
-                .tableRules(tableRuleList).build();
+        Map<String, DataSource> map1 = new HashMap<>(5);
+        map1.put("gas0", primaryDataSource);
+        DataSourceRule dataSourceRule1 = new DataSourceRule(map1);
+
+        List<String> pList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            pList.add("recharge" + i);
+        }
+
+        tableRuleList.add(new TableRule.TableRuleBuilder("recharge").actualTables(pList).dataSourceRule(dataSourceRule)
+                .tableShardingStrategy(new TableShardingStrategy("id", new ModuloTableShardingAlgorithm()))
+                .databaseShardingStrategy(new DatabaseShardingStrategy("uid", new ModuloDatabaseShardingAlgorithm()))
+                .build());
+
+        tableRuleList.add(new TableRule.TableRuleBuilder("user").actualTables(Arrays.asList("user"))
+                .dataSourceRule(dataSourceRule1).build());
+
+        tableRuleList.add(new TableRule.TableRuleBuilder("account").actualTables(Arrays.asList("account"))
+                .dataSourceRule(dataSourceRule1).build());
+
+        ShardingRule shardingRule = ShardingRule.builder().dataSourceRule(dataSourceRule).tableRules(tableRuleList).build();
 
         shardingDataSource = ShardingDataSourceFactory.createDataSource(shardingRule);
     }

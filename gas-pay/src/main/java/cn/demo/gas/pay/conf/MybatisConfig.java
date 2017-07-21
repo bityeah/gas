@@ -22,7 +22,7 @@ public class MybatisConfig {
     private ShardingDataSource shardingDataSource;
 
     @Bean
-    public SqlSessionFactoryBean createSqlSessionFactoryBean() throws IOException {
+    public SqlSessionFactoryBean createShardingSqlSessionFactoryBean() throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
         PathMatchingResourcePatternResolver pathMatchingResourcePatternResolver = new PathMatchingResourcePatternResolver();
@@ -32,5 +32,4 @@ public class MybatisConfig {
         sqlSessionFactoryBean.setTypeAliasesPackage("cn.demo.gas.pay.model");
         return sqlSessionFactoryBean;
     }
-
 }

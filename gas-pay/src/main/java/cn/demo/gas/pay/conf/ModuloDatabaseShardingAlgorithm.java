@@ -14,10 +14,12 @@ import java.util.LinkedHashSet;
  */
 public class ModuloDatabaseShardingAlgorithm implements SingleKeyDatabaseShardingAlgorithm<Integer> {
 
+    private final int count = 5;
+
     @Override
     public String doEqualSharding(Collection<String> availableTargetNames, ShardingValue<Integer> shardingValue) {
         for (String each : availableTargetNames) {
-            if (each.endsWith(shardingValue.getValue() % 2 + "")) {
+            if (each.endsWith(shardingValue.getValue() % count + "")) {
                 return each;
             }
         }
@@ -31,7 +33,7 @@ public class ModuloDatabaseShardingAlgorithm implements SingleKeyDatabaseShardin
         Collection<Integer> values = shardingValue.getValues();
         for (Integer value : values) {
             for (String dataSourceName : availableTargetNames) {
-                if (dataSourceName.endsWith(value % 2 + "")) {
+                if (dataSourceName.endsWith(value % count + "")) {
                     result.add(dataSourceName);
                 }
             }
@@ -46,7 +48,7 @@ public class ModuloDatabaseShardingAlgorithm implements SingleKeyDatabaseShardin
         Range<Integer> range = shardingValue.getValueRange();
         for (Integer i = range.lowerEndpoint(); i <= range.upperEndpoint(); i++) {
             for (String each : availableTargetNames) {
-                if (each.endsWith(i % 2 + "")) {
+                if (each.endsWith(i % count + "")) {
                     result.add(each);
                 }
             }

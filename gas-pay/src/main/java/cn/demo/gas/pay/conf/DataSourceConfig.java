@@ -26,4 +26,22 @@ public class DataSourceConfig {
     public DataSource secondDataSource() {
         return DataSourceBuilder.create().build();
     }
+
+    @Bean(name = "threeDataSource")
+    @ConfigurationProperties(prefix = "spring.three-datasource")
+    public DataSource threeDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean(name = "fourDataSource")
+    @ConfigurationProperties(prefix = "spring.four-datasource")
+    public DataSource fourDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean(name = "fiveDataSource")
+    @ConfigurationProperties(prefix = "spring.five-datasource")
+    public DataSource fiveDataSource() {
+        return DataSourceBuilder.create().build();
+    }
 }

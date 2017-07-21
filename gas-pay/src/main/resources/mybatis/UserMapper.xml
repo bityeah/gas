@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.demo.gas.pay.dao.mapper.UserMapper">
+    <insert id="insertUser" parameterType="cn.demo.gas.pay.model.User" keyProperty="id" useGeneratedKeys="true">
+        insert into `user` (username, contact, `type`, phone, state, location, address, createTime)
+        values (#{username}, #{contact}, #{type}, #{phone}, #{state}, #{location}, #{address}, #{createTime})
+    </insert>
+
+
+    <insert id="insertAccount" parameterType="cn.demo.gas.pay.model.Account">
+        insert into `account` (uid, balance, `type`, createTime)
+        values (#{uid}, #{balance}, #{type}, #{createTime})
+    </insert>
+
+    <insert id="insertRecharge" parameterType="cn.demo.gas.pay.model.Recharge">
+        insert into `recharge` (id, tradeNo, uid, source, `type`, payAccount, state, amount, payTime)
+        values (#{id}, #{tradeNo}, #{uid}, #{source}, #{type}, #{payAccount}, #{state}, #{amount}, #{payTime})
+    </insert>
+
+</mapper>
