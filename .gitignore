@@ -1,0 +1,10 @@
+target
+*.iml
+!.gitignore
+.*/
+
+.classpath
+.project
+*.log
+*/log.txt
+log.txt
