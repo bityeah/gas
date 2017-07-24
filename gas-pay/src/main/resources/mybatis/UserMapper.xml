@@ -15,9 +15,8 @@
         values (#{uid}, #{balance}, #{type}, #{createTime})
     </insert>
 
-    <insert id="insertRecharge" parameterType="cn.demo.gas.pay.model.Recharge">
-        insert into `recharge` (id, tradeNo, uid, source, `type`, payAccount, state, amount, payTime)
-        values (#{id}, #{tradeNo}, #{uid}, #{source}, #{type}, #{payAccount}, #{state}, #{amount}, #{payTime})
-    </insert>
+    <select id="listRecharge" resultType="cn.demo.gas.pay.model.Recharge">
+        select * from `recharge` order by tradeNo asc limit 20;
+    </select>
 
 </mapper>

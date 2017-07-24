@@ -17,6 +17,9 @@ public class User {
     private String address;
     private Timestamp createTime;
 
+    public User() {
+    }
+
     public User(String username, String contact, int type, String phone, int state, int location, String address) {
         this.username = username;
         this.contact = contact;

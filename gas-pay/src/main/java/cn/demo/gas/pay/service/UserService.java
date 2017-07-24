@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -26,7 +27,7 @@ public class UserService {
 
         Random random = new Random();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1000000; i++) {
             String username = firstName[random.nextInt(firstName.length)] + name[random.nextInt(name.length)];
             User user = new User(username, username, random.nextInt(2), "18657922592", 0, 0, "address");
             userMapper.insertUser(user);
@@ -39,37 +40,7 @@ public class UserService {
         return "Success";
     }
 
-    public void addRecharge() {
-
-        int k = 10;
-
-        for (int i = 1; i < 1001; i++) {
-            new Thread(new ThreadA((i - 1) * k, i * k, userMapper)).start();
-        }
-
-    }
-
-}
-
-
-class ThreadA implements Runnable {
-
-    private int start;
-    private int end;
-    private final Random random = new Random();
-    private UserMapper userMapper;
-
-    public ThreadA(int start, int end, UserMapper userMapper) {
-        this.start = start;
-        this.end = end;
-        this.userMapper = userMapper;
-    }
-
-    @Override
-    public void run() {
-        for (int i = start; i < end; i++) {
-            Recharge recharge = new Recharge(i, random.nextInt(10));
-            userMapper.insertRecharge(recharge);
-        }
+    public List<Recharge> listRecharge() {
+        return userMapper.listRecharge();
     }
 }

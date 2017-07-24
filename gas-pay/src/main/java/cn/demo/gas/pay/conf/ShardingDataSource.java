@@ -60,7 +60,7 @@ public class ShardingDataSource {
         DataSourceRule dataSourceRule = new DataSourceRule(map);
         List<TableRule> tableRuleList = new ArrayList<>();
 
-        Map<String, DataSource> map1 = new HashMap<>(5);
+        Map<String, DataSource> map1 = new HashMap<>(1);
         map1.put("gas0", primaryDataSource);
         DataSourceRule dataSourceRule1 = new DataSourceRule(map1);
 

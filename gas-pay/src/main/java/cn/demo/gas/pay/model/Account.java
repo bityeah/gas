@@ -13,6 +13,9 @@ public class Account {
     private int type;
     private Timestamp createTime;
 
+    public Account() {
+    }
+
     public Account(int uid, BigDecimal balance, int type) {
         this.uid = uid;
         this.balance = balance;

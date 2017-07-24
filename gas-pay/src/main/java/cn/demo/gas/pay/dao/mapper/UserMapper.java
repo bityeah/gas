@@ -5,6 +5,8 @@ import cn.demo.gas.pay.model.Recharge;
 import cn.demo.gas.pay.model.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by huangjp on 2017/7/18.
  */
@@ -15,5 +17,5 @@ public interface UserMapper {
 
     void insertAccount(Account account);
 
-    void insertRecharge(Recharge recharge);
+    List<Recharge> listRecharge();
 }

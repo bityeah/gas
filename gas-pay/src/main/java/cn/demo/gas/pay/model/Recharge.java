@@ -19,6 +19,9 @@ public class Recharge {
     private BigDecimal amount;
     private Timestamp payTime;
 
+    public Recharge() {
+    }
+
     public Recharge(long id, int uid) {
         this.id = id;
         this.tradeNo = System.nanoTime() + "";
