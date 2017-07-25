@@ -10,15 +10,17 @@ public class Account {
 
     private int uid;
     private BigDecimal balance;
-    private int type;
+    private BigDecimal credit;
+    private int type;               // 1.后付费 2.预付费
     private Timestamp createTime;
 
     public Account() {
     }
 
-    public Account(int uid, BigDecimal balance, int type) {
+    public Account(int uid, BigDecimal balance, BigDecimal credit, int type) {
         this.uid = uid;
         this.balance = balance;
+        this.credit = credit;
         this.type = type;
         this.createTime = new Timestamp(System.currentTimeMillis());
     }
@@ -37,6 +39,14 @@ public class Account {
 
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
+    }
+
+    public BigDecimal getCredit() {
+        return credit;
+    }
+
+    public void setCredit(BigDecimal credit) {
+        this.credit = credit;
     }
 
     public int getType() {
@@ -60,6 +70,7 @@ public class Account {
         return "Account{" +
                 "uid=" + uid +
                 ", balance=" + balance +
+                ", credit=" + credit +
                 ", type=" + type +
                 ", createTime=" + createTime +
                 '}';

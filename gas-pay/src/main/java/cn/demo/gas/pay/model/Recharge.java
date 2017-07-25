@@ -12,10 +12,10 @@ public class Recharge {
     private long id;
     private String tradeNo;
     private int uid;
-    private int source;
-    private int type;
+    private int source;         // 支付方式：1.支付宝 2.微信 3.现金 4.银联 5.苹果支付
+    private int type;           // 付款类型 1.缴费 2.充值
     private String payAccount;
-    private int state;
+    private int state;          // 交易状态 0.失败 1.成功
     private BigDecimal amount;
     private Timestamp payTime;
 

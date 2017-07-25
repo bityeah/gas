@@ -33,15 +33,15 @@ public class DataInsert {
             Random random = new Random();
             int[] p = new int[5];
 
-            for (int j = 1; j < 100000001; j++) {
+            for (int j = 1; j < 10000001; j++) {
 
                 int uid = random.nextInt(1000000);
                 int i = uid % 5;
 
-                addBatch(j, uid, prest[i]);
+                addBatch(random, j, uid, prest[i]);
                 p[i] ++;
 
-                if (p[i] == 10000) {
+                if (p[i] == 1000) {
                     prest[i].executeBatch();
                     conn[i].commit();
                     prest[i].clearBatch();
@@ -63,15 +63,15 @@ public class DataInsert {
         }
     }
 
-    public static void addBatch(long i, int uid, PreparedStatement prest) throws Exception{
+    public static void addBatch(Random random, long i, int uid, PreparedStatement prest) throws Exception{
         prest.setLong(1,  i % 100);
         prest.setLong(2, i);
         prest.setLong(3, System.nanoTime());
         prest.setInt(4, uid);
-        prest.setInt(5, 1);
-        prest.setInt(6, 1);
+        prest.setInt(5, random.nextInt(5) + 1);
+        prest.setInt(6, random.nextInt(2) + 1);
         prest.setString(7, "huangjp.hz@gmail.com");
-        prest.setInt(8, 0);
+        prest.setInt(8, 1);
         prest.setBigDecimal(9, BigDecimal.ZERO);
         prest.setTimestamp(10, new Timestamp(System.currentTimeMillis()));
         prest.addBatch();
