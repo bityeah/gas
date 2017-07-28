@@ -13,20 +13,24 @@ public class User {
     private int type;
     private String phone;
     private int state;
-    private int location;
+    private int provinceId;
+    private int cityId;
+    private int areaId;
     private String address;
     private Timestamp createTime;
 
     public User() {
     }
 
-    public User(String username, String contact, int type, String phone, int state, int location, String address) {
+    public User(String username, String contact, int type, String phone, int state, int provinceId, int cityId, int areaId, String address) {
         this.username = username;
         this.contact = contact;
         this.type = type;
         this.phone = phone;
         this.state = state;
-        this.location = location;
+        this.provinceId = provinceId;
+        this.cityId = cityId;
+        this.areaId = areaId;
         this.address = address;
         this.createTime = new Timestamp(System.currentTimeMillis());
     }
@@ -79,12 +83,28 @@ public class User {
         this.state = state;
     }
 
-    public int getLocation() {
-        return location;
+    public int getProvinceId() {
+        return provinceId;
     }
 
-    public void setLocation(int location) {
-        this.location = location;
+    public void setProvinceId(int provinceId) {
+        this.provinceId = provinceId;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
+    public int getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(int areaId) {
+        this.areaId = areaId;
     }
 
     public String getAddress() {
@@ -112,7 +132,9 @@ public class User {
                 ", type=" + type +
                 ", phone='" + phone + '\'' +
                 ", state=" + state +
-                ", location=" + location +
+                ", provinceId=" + provinceId +
+                ", cityId=" + cityId +
+                ", areaId=" + areaId +
                 ", address='" + address + '\'' +
                 ", createTime=" + createTime +
                 '}';

@@ -19,6 +19,9 @@ public class Recharge {
     private BigDecimal amount;
     private Timestamp payTime;
 
+
+    private String provinceName;//省name
+
     public Recharge() {
     }
 
