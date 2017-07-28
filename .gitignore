@@ -1,6 +1,6 @@
 target
 *.iml
-!.gitignore
+.gitignore
 .*/
 
 .classpath
@@ -8,3 +8,5 @@ target
 *.log
 */log.txt
 log.txt
+.yml
+logback-spring.xml

@@ -17,7 +17,7 @@
         select * from `account` where uid = #{uid}
     </select>
 
-    <select id="getUserCount" resultType="int" parameterType="com.danqoo.paas.dao.model.QuerySubmit">
+    <select id="getUserCount" resultType="int" parameterType="cn.demo.gas.pay.model.QuerySubmit">
         select count(1) from `user` where 1 = 1
         <include refid="getUserWhereSql"/>
     </select>
