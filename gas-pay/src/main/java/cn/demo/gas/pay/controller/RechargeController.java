@@ -1,13 +1,11 @@
 package cn.demo.gas.pay.controller;
 
 import cn.demo.gas.pay.from.RechargeSubmit;
-import cn.demo.gas.pay.model.Recharge;
 import cn.demo.gas.pay.service.RechargeService;
+import cn.demo.gas.pay.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * 交易流水
@@ -21,7 +19,7 @@ public class RechargeController {
 
 
     @RequestMapping("/recharge/list")
-    public List<Recharge> getRechargeList(RechargeSubmit rechargeSubmit) {
+    public Result getRechargeList(RechargeSubmit rechargeSubmit) {
         return rechargeService.getRechargeList(rechargeSubmit);
     }
 

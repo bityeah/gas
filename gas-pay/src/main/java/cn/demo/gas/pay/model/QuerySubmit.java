@@ -4,6 +4,8 @@ package cn.demo.gas.pay.model;
  * Created by zhaohg on 2017/7/27.
  */
 
+import cn.demo.gas.pay.util.Util;
+
 import java.util.HashMap;
 import java.util.Map;
 
