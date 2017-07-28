@@ -27,7 +27,9 @@ CREATE TABLE `user` (
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '用户类型 1.个人用户 2.商业用户',
   `phone` varchar(20) NOT NULL DEFAULT '' COMMENT '手机号',
   `state` tinyint(1) NOT NULL DEFAULT '1' COMMENT '用户状态 0.禁用 1.正常',
-  `location` int(11) NOT NULL DEFAULT '0',
+  `provinceId` int(11) NOT NULL DEFAULT '0' COMMENT '省id',
+  `cityId` int(11) NOT NULL DEFAULT '0' COMMENT '市id',
+  `areaId` int(11) NOT NULL DEFAULT '0' COMMENT '区id',
   `address` varchar(500) NOT NULL DEFAULT '',
   `createTime` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -45,7 +47,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `createTables`()
     SET table_name='';
     SET table_pre='recharge';
     SET sql_text='';
-    WHILE i<100 DO
+    WHILE i < 100 DO
       SET table_name=CONCAT(table_pre,i);
 
       SET sql_text=CONCAT('CREATE TABLE ', table_name, ' (`id` bigint(20) NOT NULL COMMENT \'分片主键\',
