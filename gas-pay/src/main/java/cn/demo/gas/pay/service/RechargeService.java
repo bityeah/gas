@@ -24,4 +24,12 @@ public class RechargeService {
 
         return rechargeMapper.getRechargeList(querySubmit);
     }
+
+
+    public int getRechargeCount(RechargeSubmit submit){
+        QuerySubmit querySubmit = new QuerySubmit();
+        submit.setParams(querySubmit);
+
+        return rechargeMapper.getRechargeCount(querySubmit);
+    }
 }

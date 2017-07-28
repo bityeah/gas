@@ -13,7 +13,6 @@ import java.util.List;
  * 交易流水
  * Created by zhaohg on 2017/7/27.
  */
-@RequestMapping("/recharge")
 @RestController
 public class RechargeController {
 
@@ -21,7 +20,7 @@ public class RechargeController {
     private RechargeService rechargeService;
 
 
-    @RequestMapping("/list")
+    @RequestMapping("/recharge/list")
     public List<Recharge> getRechargeList(RechargeSubmit rechargeSubmit) {
         return rechargeService.getRechargeList(rechargeSubmit);
     }

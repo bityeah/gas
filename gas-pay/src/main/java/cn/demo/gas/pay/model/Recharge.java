@@ -19,7 +19,6 @@ public class Recharge {
     private BigDecimal amount;
     private Timestamp payTime;
 
-
     private String provinceName;//省name
 
     public Recharge() {
@@ -107,6 +106,14 @@ public class Recharge {
 
     public void setPayTime(Timestamp payTime) {
         this.payTime = payTime;
+    }
+
+    public String getProvinceName() {
+        return provinceName;
+    }
+
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName;
     }
 
     @Override

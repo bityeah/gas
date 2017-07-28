@@ -4,7 +4,6 @@ import cn.demo.gas.pay.dao.mapper.UserMapper;
 import cn.demo.gas.pay.from.UserSubmit;
 import cn.demo.gas.pay.model.Account;
 import cn.demo.gas.pay.model.QuerySubmit;
-import cn.demo.gas.pay.model.Recharge;
 import cn.demo.gas.pay.model.User;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +30,7 @@ public class UserService {
 
         for (int i = 0; i < 1000000; i++) {
             String username = firstName[random.nextInt(firstName.length)] + name[random.nextInt(name.length)];
-            User user = new User(username, username, random.nextInt(2) + 1, "18657922592", 1, 0, "address");
+            User user = new User(username, username, random.nextInt(2) + 1, "18657922592", 1, 0, 0, 0, "address");
             userMapper.insertUser(user);
 
             Account account = new Account(user.getId(), BigDecimal.ZERO, BigDecimal.ZERO, 1);
@@ -42,12 +41,22 @@ public class UserService {
         return "Success";
     }
 
-    public List<Recharge> listRecharge() {
-        return userMapper.listRecharge();
+    public List<User> getUserList(UserSubmit submit) {
+        QuerySubmit querySubmit = new QuerySubmit();
+        submit.setParams(querySubmit);
+
+        return userMapper.getUserList(querySubmit);
     }
 
-    public List<User> getUserList(UserSubmit user) {
-        QuerySubmit submit = new QuerySubmit();
-        return userMapper.getUserList(submit);
+    public int getUserCount(UserSubmit submit){
+        QuerySubmit querySubmit = new QuerySubmit();
+        submit.setParams(querySubmit);
+
+        return userMapper.getUserCount(querySubmit);
     }
+
+    public User getUserById(Long id){
+        return userMapper.getUserById(id);
+    }
+
 }

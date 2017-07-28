@@ -9,6 +9,7 @@ import java.sql.Timestamp;
  */
 public class RechargeSubmit {
 
+    private Long uid;
     private Integer source;         // 支付方式：1.支付宝 2.微信 3.现金 4.银联 5.苹果支付
     private Integer payType;        // 付款类型：1.缴费 2.预付费
     private Integer state;          // 交易状态 0.失败 1.成功
@@ -21,6 +22,14 @@ public class RechargeSubmit {
 
     private int page = 1;
     private int pageSize = 10;
+
+    public Long getUid() {
+        return uid;
+    }
+
+    public void setUid(Long uid) {
+        this.uid = uid;
+    }
 
     public Integer getSource() {
         return source;
@@ -110,6 +119,7 @@ public class RechargeSubmit {
             querySubmit.put("endTime", new Timestamp(endTime));
         }
 
+        querySubmit.put("uid", uid);
         querySubmit.put("source", source);
         querySubmit.put("payType", payType);
         querySubmit.put("state", state);

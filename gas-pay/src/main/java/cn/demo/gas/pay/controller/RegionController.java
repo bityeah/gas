@@ -22,7 +22,7 @@ public class RegionController {
 
 
     @RequestMapping("/list")
-    List<Region> getReginList(@PathVariable int parentId) {
+    public List<Region> getReginList(@PathVariable int parentId) {
         return regionService.getRegionByParentId(parentId);
     }
 

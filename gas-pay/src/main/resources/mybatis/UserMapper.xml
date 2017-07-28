@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.demo.gas.pay.dao.mapper.UserMapper">
     <insert id="insertUser" parameterType="cn.demo.gas.pay.model.User" keyProperty="id" useGeneratedKeys="true">
-        insert into `user` (username, contact, `type`, phone, state, location, address, createTime)
-        values (#{username}, #{contact}, #{type}, #{phone}, #{state}, #{location}, #{address}, #{createTime})
+        insert into `user` (username, contact, `type`, phone, state, provinceId, cityId,areaId,  address, createTime)
+        values (#{username}, #{contact}, #{type}, #{phone}, #{state}, #{provinceId}, #{cityId}, #{areaId}, #{address}, #{createTime})
     </insert>
 
 
@@ -15,15 +13,34 @@
         values (#{uid}, #{balance}, #{type}, #{createTime})
     </insert>
 
+    <select id="getAccountById" resultType="cn.demo.gas.pay.model.Account" parameterType="java.lang.Long">
+        select * from `account` where uid = #{uid}
+    </select>
 
-    <select id="getUserList" resultType="cn.demo.gas.pay.model.Recharge" parameterType="cn.demo.gas.pay.model.QuerySubmit">
-        select * from `user`
-        WHERE 1 = 1
+    <select id="getUserCount" resultType="int" parameterType="com.danqoo.paas.dao.model.QuerySubmit">
+        select count(1) from `user` where 1 = 1
+        <include refid="getUserWhereSql"/>
+    </select>
+
+    <select id="getUserList" resultType="cn.demo.gas.pay.model.User" parameterType="cn.demo.gas.pay.model.QuerySubmit">
+        select * from `user` where 1 = 1
+        <include refid="getUserWhereSql"/>
+        ORDER BY createTime DESC
+        LIMIT #{start}, #{end}
+    </select>
+
+    <sql id="getUserWhereSql">
         <if test="uid != null and uid > 0">
             and uid = #{uid}
         </if>
-        ORDER BY a.id ASC , createTime DESC
-        LIMIT #{start}, #{end}
+
+        <if test="address != null and address">
+            and address like CONCAT('%', #{address}, '%')
+        </if>
+    </sql>
+
+    <select id="getUserById" resultType="cn.demo.gas.pay.model.User" parameterType="java.lang.Long">
+        select * from `user` where id = #{uid}
     </select>
 
 </mapper>

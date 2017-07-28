@@ -13,4 +13,6 @@ import java.util.List;
 public interface RechargeMapper {
 
     List<Recharge> getRechargeList(QuerySubmit submit);
+
+    int getRechargeCount(QuerySubmit querySubmit);
 }

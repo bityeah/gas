@@ -14,6 +14,6 @@ public interface RegionMapper {
     List<Region> getRegionByParentId(int parentId);
 
 
-    Region getRegionById(int id);
+//    Region getRegionById(int id);
 
 }

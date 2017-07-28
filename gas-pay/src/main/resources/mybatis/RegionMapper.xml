@@ -5,14 +5,7 @@
 
     <select id="getRegionByParentId" resultType="cn.demo.gas.pay.model.Region" parameterType="java.lang.Integer">
         select * from `region`
-        where parentId = #{parentId} order by sort ;
+        where parentId = #{parentId} order by sort;
     </select>
-
-
-    <select id="getRegionById" resultType="cn.demo.gas.pay.model.Region" parameterType="java.lang.Integer">
-        select * from `region`
-        where id = #{id} order by sort ;
-    </select>
-
 
 </mapper>
