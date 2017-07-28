@@ -1,7 +1,9 @@
 package cn.demo.gas.pay.service;
 
 import cn.demo.gas.pay.dao.mapper.UserMapper;
+import cn.demo.gas.pay.from.UserSubmit;
 import cn.demo.gas.pay.model.Account;
+import cn.demo.gas.pay.model.QuerySubmit;
 import cn.demo.gas.pay.model.Recharge;
 import cn.demo.gas.pay.model.User;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,7 @@ import java.util.Random;
 public class UserService {
 
     @Resource
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     public String addUser() {
 
@@ -42,5 +44,10 @@ public class UserService {
 
     public List<Recharge> listRecharge() {
         return userMapper.listRecharge();
+    }
+
+    public List<User> getUserList(UserSubmit user) {
+        QuerySubmit submit = new QuerySubmit();
+        return userMapper.getUserList(submit);
     }
 }

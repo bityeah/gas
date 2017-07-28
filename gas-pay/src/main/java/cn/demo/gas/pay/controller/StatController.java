@@ -1,23 +1,21 @@
 package cn.demo.gas.pay.controller;
 
-import cn.demo.gas.pay.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by zhaohg on 2017/7/27.
  */
-@RequestMapping("/region")
+@RequestMapping("/stat")
 @RestController
-public class RegionController {
+public class StatController {
 
-    @Autowired
-    UserService userService;
-
-
-    @RequestMapping("/list")
-    String addUser() {
-        return userService.addUser();
-    }
+//    @Autowired
+//    StatService StatService;
+//
+//
+//    @RequestMapping("/alipay")
+//    String alipay() {
+//        return StatService.addStat();
+//    }
 }
