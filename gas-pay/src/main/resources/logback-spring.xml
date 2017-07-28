@@ -25,11 +25,20 @@
         </encoder>
     </appender>
 
-    <!-- 应用服务级 -->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>.%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger:%L - %msg %n</Pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+    </appender>
 
+    <!-- 应用服务级 -->
     <logger name="cn.demo.gas.pay" additivity="false">
         <level value="DEBUG"/>
         <appender-ref ref="payAppender"/>
+        <appender-ref ref="consoleAppender"/>
     </logger>
 
 
@@ -38,5 +47,6 @@
         <level value="WARN"/>
         <appender-ref ref="containerAppender"/>
     </root>
+
 
 </configuration>
