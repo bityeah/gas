@@ -15,8 +15,15 @@
         values (#{uid}, #{balance}, #{type}, #{createTime})
     </insert>
 
-    <select id="listRecharge" resultType="cn.demo.gas.pay.model.Recharge">
-        select * from `recharge` order by tradeNo asc limit 20;
+
+    <select id="getUserList" resultType="cn.demo.gas.pay.model.Recharge" parameterType="cn.demo.gas.pay.model.QuerySubmit">
+        select * from `user`
+        WHERE 1 = 1
+        <if test="uid != null and uid > 0">
+            and uid = #{uid}
+        </if>
+        ORDER BY a.id ASC , createTime DESC
+        LIMIT #{start}, #{end}
     </select>
 
 </mapper>
