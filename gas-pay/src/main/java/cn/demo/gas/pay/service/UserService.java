@@ -5,6 +5,7 @@ import cn.demo.gas.pay.from.UserSubmit;
 import cn.demo.gas.pay.model.Account;
 import cn.demo.gas.pay.model.QuerySubmit;
 import cn.demo.gas.pay.model.User;
+import cn.demo.gas.pay.util.Result;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -41,11 +42,13 @@ public class UserService {
         return "Success";
     }
 
-    public List<User> getUserList(UserSubmit submit) {
+    public Result getUserList(UserSubmit submit) {
         QuerySubmit querySubmit = new QuerySubmit();
         submit.setParams(querySubmit);
 
-        return userMapper.getUserList(querySubmit);
+        List<User> list = userMapper.getUserList(querySubmit);
+
+        return new Result(list);
     }
 
     public int getUserCount(UserSubmit submit){
