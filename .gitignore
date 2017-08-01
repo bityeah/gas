@@ -1,12 +1,3 @@
-target
+target/
 *.iml
-.gitignore
 .*/
-
-.classpath
-.project
-*.log
-*/log.txt
-log.txt
-.yml
-logback-spring.xml
