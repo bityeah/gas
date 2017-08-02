@@ -77,6 +77,9 @@ public class ShardingDataSource {
         tableRuleList.add(new TableRule.TableRuleBuilder("user").actualTables(Arrays.asList("user"))
                 .dataSourceRule(dataSourceRule1).build());
 
+        tableRuleList.add(new TableRule.TableRuleBuilder("region").actualTables(Arrays.asList("region"))
+                .dataSourceRule(dataSourceRule1).build());
+
         tableRuleList.add(new TableRule.TableRuleBuilder("account").actualTables(Arrays.asList("account"))
                 .dataSourceRule(dataSourceRule1).build());
 
