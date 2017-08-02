@@ -2,6 +2,7 @@ package cn.demo.gas.pay.service;
 
 import cn.demo.gas.pay.dao.mapper.RegionMapper;
 import cn.demo.gas.pay.model.Region;
+import cn.demo.gas.pay.util.Result;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,8 +22,10 @@ public class RegionService {
      * @param parentId 父id
      * @return
      */
-    public List<Region> getRegionByParentId(int parentId) {
-        return regionMapper.getRegionByParentId(parentId);
+    public Result getRegionByParentId(int parentId) {
+        List<Region> list = regionMapper.getRegionByParentId(parentId);
+
+        return new Result(list);
     }
 
 }
