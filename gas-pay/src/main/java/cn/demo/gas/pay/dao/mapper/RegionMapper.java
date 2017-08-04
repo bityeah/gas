@@ -13,6 +13,9 @@ public interface RegionMapper {
 
     List<Region> getRegionByParentId(int parentId);
 
+    List<Integer> queryRegionIdList(int level);
+
+    List<Region> loadAll();
 
 //    Region getRegionById(int id);
 

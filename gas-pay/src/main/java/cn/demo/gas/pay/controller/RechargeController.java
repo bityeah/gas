@@ -1,6 +1,6 @@
 package cn.demo.gas.pay.controller;
 
-import cn.demo.gas.pay.from.RechargeSubmit;
+import cn.demo.gas.pay.from.RechargeForm;
 import cn.demo.gas.pay.service.RechargeService;
 import cn.demo.gas.pay.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,8 @@ public class RechargeController {
 
 
     @RequestMapping("/recharge/list")
-    public Result getRechargeList(RechargeSubmit rechargeSubmit) {
-        return rechargeService.getRechargeList(rechargeSubmit);
+    public Result getRechargeList(RechargeForm rechargeForm) {
+        return rechargeService.getRechargeList(rechargeForm);
     }
 
 

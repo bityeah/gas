@@ -28,4 +28,8 @@ public class RegionService {
         return new Result(list);
     }
 
+    public List<Integer> queryRegionIdList(int level) {
+        return regionMapper.queryRegionIdList(level);
+    }
+
 }

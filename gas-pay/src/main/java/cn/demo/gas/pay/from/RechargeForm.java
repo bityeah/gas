@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 /**
  * Created by zhaohg on 2017/7/27.
  */
-public class RechargeSubmit {
+public class RechargeForm {
 
     private Long uid;
     private Integer source;         // 支付方式：1.支付宝 2.微信 3.现金 4.银联 5.苹果支付

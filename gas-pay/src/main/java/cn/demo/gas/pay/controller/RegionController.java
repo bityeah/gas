@@ -18,7 +18,7 @@ public class RegionController {
 
 
     @RequestMapping("/region/list")
-    public Result getReginList(int parentId) {
+    public Result getRegionList(int parentId) {
         return regionService.getRegionByParentId(parentId);
     }
 

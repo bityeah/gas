@@ -1,6 +1,6 @@
 package cn.demo.gas.pay.controller;
 
-import cn.demo.gas.pay.from.UserSubmit;
+import cn.demo.gas.pay.from.UserForm;
 import cn.demo.gas.pay.service.UserService;
 import cn.demo.gas.pay.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class UserController {
 
 
     @RequestMapping("/user/list")
-    public Result getUserList(UserSubmit submit) {
+    public Result getUserList(UserForm submit) {
         return userService.getUserList(submit);
     }
 

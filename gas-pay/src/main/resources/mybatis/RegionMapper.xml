@@ -8,4 +8,12 @@
         where parentId = #{parentId} order by sort;
     </select>
 
+    <select id="queryRegionIdList" resultType="Integer" parameterType="Integer">
+        select id from region where `level` = #{level}
+    </select>
+
+    <select id="loadAll" resultType="cn.demo.gas.pay.model.Region">
+        select * from region order by `level` asc, sort asc
+    </select>
+
 </mapper>

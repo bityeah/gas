@@ -1,7 +1,7 @@
 package cn.demo.gas.pay.service;
 
 import cn.demo.gas.pay.dao.mapper.RechargeMapper;
-import cn.demo.gas.pay.from.RechargeSubmit;
+import cn.demo.gas.pay.from.RechargeForm;
 import cn.demo.gas.pay.model.QuerySubmit;
 import cn.demo.gas.pay.model.Recharge;
 import cn.demo.gas.pay.util.Result;
@@ -19,7 +19,7 @@ public class RechargeService {
     @Resource
     private RechargeMapper rechargeMapper;
 
-    public Result getRechargeList(RechargeSubmit submit) {
+    public Result getRechargeList(RechargeForm submit) {
         QuerySubmit querySubmit = new QuerySubmit();
         submit.setParams(querySubmit);
 
@@ -29,7 +29,7 @@ public class RechargeService {
     }
 
 
-    public int getRechargeCount(RechargeSubmit submit){
+    public int getRechargeCount(RechargeForm submit){
         QuerySubmit querySubmit = new QuerySubmit();
         submit.setParams(querySubmit);
 
