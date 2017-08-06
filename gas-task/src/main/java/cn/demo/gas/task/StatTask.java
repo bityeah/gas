@@ -1,4 +1,4 @@
-package cn.demo.gas.service;
+package cn.demo.gas.task;
 
 import cn.demo.gas.pay.dao.mapper.RechargeMapper;
 import cn.demo.gas.pay.dao.mapper.StatMapper;
@@ -21,7 +21,6 @@ public class StatTask {
 
     @Resource
     private StatMapper statMapper;
-
 
     public void index(){
         System.out.println("111");

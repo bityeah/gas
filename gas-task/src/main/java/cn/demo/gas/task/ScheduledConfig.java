@@ -1,6 +1,5 @@
 package cn.demo.gas.task;
 
-import cn.demo.gas.service.StatTask;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -17,9 +16,7 @@ public class ScheduledConfig {
 
     @Scheduled(cron = "0/10 * * * * ?") // 每10秒执行一次
     public void scheduler() {
-
-        StatTask task = new StatTask();
-        task.index();
+        System.out.println("111");
     }
 
     //固定等待时间 @Scheduled(fixedDelay = 时间间隔 )
