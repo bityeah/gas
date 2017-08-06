@@ -16,6 +16,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>cn.demo</groupId>
+            <artifactId>gas-pay</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

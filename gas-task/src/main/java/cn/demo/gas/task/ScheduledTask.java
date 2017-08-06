@@ -1,8 +1,10 @@
 package cn.demo.gas.task;
 
+import cn.demo.gas.pay.dao.mapper.StatMapper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +15,9 @@ import java.util.concurrent.TimeUnit;
 public class ScheduledTask {
 
     public final static long SECOND = 1 * 1000;
+
+    @Resource
+    StatMapper statMapper;
 
     @Scheduled(cron = "0/10 * * * * ?") // 每10秒执行一次
     public void scheduler() {

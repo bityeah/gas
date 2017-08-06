@@ -24,4 +24,7 @@ public interface UserMapper {
     User getUserById(Long uid);
 
     List<User> getUserList(QuerySubmit submit);
+
+    //TODO 分个人用户还是商业用户 获取昨天的新增用户总数
+    //    int getUserCount()
 }
