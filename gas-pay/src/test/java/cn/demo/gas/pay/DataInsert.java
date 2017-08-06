@@ -25,7 +25,7 @@ public class DataInsert {
 
             for (int i = 0; i < 5; i++) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn[i] = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gas" + i, "root", "123456");
+                conn[i] = DriverManager.getConnection("jdbc:mysql://104.199.132.220:3306/gas" + i, "root", "PI7jnuldfLuE");
                 conn[i].setAutoCommit(false);
                 prest[i] = conn[i].prepareStatement(sql);
             }
@@ -33,15 +33,15 @@ public class DataInsert {
             Random random = new Random();
             int[] p = new int[5];
 
-            for (int j = 1; j < 10000001; j++) {
+            for (int j = 1; j < 1000000001; j++) {
 
-                int uid = random.nextInt(1000000);
+                int uid = random.nextInt(2000000) + 1;
                 int i = uid % 5;
 
                 addBatch(random, j, uid, prest[i]);
                 p[i] ++;
 
-                if (p[i] == 1000) {
+                if (p[i] == 5000) {
                     prest[i].executeBatch();
                     conn[i].commit();
                     prest[i].clearBatch();
@@ -72,7 +72,7 @@ public class DataInsert {
         prest.setInt(6, random.nextInt(2) + 1);
         prest.setString(7, "huangjp.hz@gmail.com");
         prest.setInt(8, 1);
-        prest.setBigDecimal(9, BigDecimal.ZERO);
+        prest.setBigDecimal(9, BigDecimal.valueOf(random.nextInt(1000)));
         prest.setTimestamp(10, new Timestamp(System.currentTimeMillis()));
         prest.addBatch();
     }

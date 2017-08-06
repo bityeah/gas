@@ -16,7 +16,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/user/add")
+    @Deprecated
+//    @RequestMapping("/user/add")
     public String addUser() {
         return userService.addUser();
     }
