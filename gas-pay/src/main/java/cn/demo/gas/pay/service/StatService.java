@@ -35,6 +35,7 @@ import java.util.Map;
 @Service
 public class StatService {
 
+
     @Resource
     private StatMapper statMapper;
 

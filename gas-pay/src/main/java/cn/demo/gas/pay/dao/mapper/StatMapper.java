@@ -13,6 +13,8 @@ import java.util.Map;
 @Repository
 public interface StatMapper {
 
+    void insertStatData(StatData statData);
+
     //总交易额
     BigDecimal getAmountTotal();
 
