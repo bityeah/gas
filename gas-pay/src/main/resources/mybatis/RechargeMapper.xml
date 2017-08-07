@@ -4,20 +4,14 @@
 <mapper namespace="cn.demo.gas.pay.dao.mapper.RechargeMapper">
 
     <select id="getRechargeList" resultType="cn.demo.gas.pay.model.Recharge" parameterType="cn.demo.gas.pay.model.QuerySubmit">
-        SELECT a.*, b.userName, concat(c.name,c.suffix) as provinceName
-        FROM recharge a
-        LEFT JOIN user b ON a.uid = b.id
-        LEFT JOIN region c on b.provinceId = c.id
+        SELECT a.* FROM recharge a
         <include refid="rechargeWhereSql" />
-        ORDER BY payTime DESC
+        ORDER BY a.payTime DESC
         LIMIT #{start}, #{end}
     </select>
 
     <select id="getRechargeCount" resultType="cn.demo.gas.pay.model.Recharge" parameterType="cn.demo.gas.pay.model.QuerySubmit">
-        SELECT a.*, b.userName, concat(c.name,c.suffix) as provinceName
-        FROM recharge a
-        LEFT JOIN user b ON a.uid = b.id
-        LEFT JOIN region c on b.provinceId = c.id
+        SELECT a.* FROM recharge a
         <include refid="rechargeWhereSql" />
     </select>
 
@@ -34,12 +28,6 @@
             </if>
             <if test="state != null">
                 and a.state = #{state}
-            </if>
-            <if test="userType != null">
-                and b.type = #{userType}
-            </if>
-            <if test="provinceId != null and provinceId > 0">
-                and a.provinceId = #{provinceId}
             </if>
             <if test="startTime != null">
                 and a.payTime >= #{startTime}
