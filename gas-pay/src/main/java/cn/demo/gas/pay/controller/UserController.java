@@ -28,5 +28,9 @@ public class UserController {
         return userService.getUserList(submit);
     }
 
+    @RequestMapping("/user/info")
+    public Result getUserById(long uid) {
+        return userService.getUserById(uid);
+    }
 
 }

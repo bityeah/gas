@@ -87,4 +87,65 @@ public class DateUtil {
         return cal.getTime();
     }
 
+    /**
+     * 获取当前年  2017
+     * @return
+     * @author zhaohonggang @date 2017年7月13日
+     */
+    public static int getYear() {
+        Calendar cad = Calendar.getInstance();
+        return cad.get(Calendar.YEAR);
+    }
+
+    public static int getYear(long time) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(time);
+        return calendar.get(Calendar.YEAR);
+    }
+
+    public static int getYear(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.YEAR);
+    }
+
+    /**
+     * 获取中国当前月月份
+     * @return
+     * @author zhaohonggang @date 2017年7月13日
+     */
+    public static int getMonth() {
+        Calendar cad = Calendar.getInstance();
+        return cad.get(Calendar.MONTH) + 1;
+    }
+
+    public static int getMonth(long time) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(time);
+        return calendar.get(Calendar.MONTH);
+    }
+
+    public static int getMonth(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.MONTH);
+    }
+
+    public static int getDay() {
+        Calendar cad = Calendar.getInstance();
+        return cad.get(Calendar.DATE);
+    }
+
+    public static int getDay(long time) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(time);
+        return calendar.get(Calendar.DATE);
+    }
+
+    public static int getDay(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.DATE);
+    }
+
 }

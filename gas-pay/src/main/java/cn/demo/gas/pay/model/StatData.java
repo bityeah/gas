@@ -9,15 +9,27 @@ import java.util.Date;
 public class StatData {
 
     private long id;
-    private BigDecimal aliPay;      //支付宝
-    private BigDecimal wechatPay;   //微信
-    private BigDecimal cashPay;     //现金
-    private BigDecimal applePay;    //苹果
-    private BigDecimal unionPay;    //银联
-    private BigDecimal entrustPay;  //银行委托
-    private BigDecimal userType;    //用户类型 1.个人用户 2.商业用户
-    private BigDecimal addUpUser;   //新增用户数
-    private Date createTime;
+    private Integer year;
+    private Integer month;
+    private Integer day;
+    private BigDecimal userAliPay;      //支付宝
+    private BigDecimal userWechatPay;   //微信
+    private BigDecimal userCashPay;     //现金
+    private BigDecimal userApplePay;    //苹果
+    private BigDecimal userUnionPay;    //银联
+    private BigDecimal userEntrustPay;  //银行委托
+    private BigDecimal addUpUser;       //新增用户数
+
+    private BigDecimal companyAliPay;      //支付宝
+    private BigDecimal companyWechatPay;   //微信
+    private BigDecimal companyCashPay;     //现金
+    private BigDecimal companyApplePay;    //苹果
+    private BigDecimal companyUnionPay;    //银联
+    private BigDecimal companyEntrustPay;  //银行委托
+    private BigDecimal addUpCompany;        //新增用户数
+
+    private Date statTime;                 //统计这个日期的数据
+    private Date createTime;                //创建时间
 
 
     public long getId() {
@@ -28,60 +40,76 @@ public class StatData {
         this.id = id;
     }
 
-    public BigDecimal getAliPay() {
-        return aliPay;
+    public Integer getYear() {
+        return year;
     }
 
-    public void setAliPay(BigDecimal aliPay) {
-        this.aliPay = aliPay;
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
-    public BigDecimal getWechatPay() {
-        return wechatPay;
+    public Integer getMonth() {
+        return month;
     }
 
-    public void setWechatPay(BigDecimal wechatPay) {
-        this.wechatPay = wechatPay;
+    public void setMonth(Integer month) {
+        this.month = month;
     }
 
-    public BigDecimal getCashPay() {
-        return cashPay;
+    public Integer getDay() {
+        return day;
     }
 
-    public void setCashPay(BigDecimal cashPay) {
-        this.cashPay = cashPay;
+    public void setDay(Integer day) {
+        this.day = day;
     }
 
-    public BigDecimal getApplePay() {
-        return applePay;
+    public BigDecimal getUserAliPay() {
+        return userAliPay;
     }
 
-    public void setApplePay(BigDecimal applePay) {
-        this.applePay = applePay;
+    public void setUserAliPay(BigDecimal userAliPay) {
+        this.userAliPay = userAliPay;
     }
 
-    public BigDecimal getUnionPay() {
-        return unionPay;
+    public BigDecimal getUserWechatPay() {
+        return userWechatPay;
     }
 
-    public void setUnionPay(BigDecimal unionPay) {
-        this.unionPay = unionPay;
+    public void setUserWechatPay(BigDecimal userWechatPay) {
+        this.userWechatPay = userWechatPay;
     }
 
-    public BigDecimal getEntrustPay() {
-        return entrustPay;
+    public BigDecimal getUserCashPay() {
+        return userCashPay;
     }
 
-    public void setEntrustPay(BigDecimal entrustPay) {
-        this.entrustPay = entrustPay;
+    public void setUserCashPay(BigDecimal userCashPay) {
+        this.userCashPay = userCashPay;
     }
 
-    public BigDecimal getUserType() {
-        return userType;
+    public BigDecimal getUserApplePay() {
+        return userApplePay;
     }
 
-    public void setUserType(BigDecimal userType) {
-        this.userType = userType;
+    public void setUserApplePay(BigDecimal userApplePay) {
+        this.userApplePay = userApplePay;
+    }
+
+    public BigDecimal getUserUnionPay() {
+        return userUnionPay;
+    }
+
+    public void setUserUnionPay(BigDecimal userUnionPay) {
+        this.userUnionPay = userUnionPay;
+    }
+
+    public BigDecimal getUserEntrustPay() {
+        return userEntrustPay;
+    }
+
+    public void setUserEntrustPay(BigDecimal userEntrustPay) {
+        this.userEntrustPay = userEntrustPay;
     }
 
     public BigDecimal getAddUpUser() {
@@ -90,6 +118,70 @@ public class StatData {
 
     public void setAddUpUser(BigDecimal addUpUser) {
         this.addUpUser = addUpUser;
+    }
+
+    public BigDecimal getCompanyAliPay() {
+        return companyAliPay;
+    }
+
+    public void setCompanyAliPay(BigDecimal companyAliPay) {
+        this.companyAliPay = companyAliPay;
+    }
+
+    public BigDecimal getCompanyWechatPay() {
+        return companyWechatPay;
+    }
+
+    public void setCompanyWechatPay(BigDecimal companyWechatPay) {
+        this.companyWechatPay = companyWechatPay;
+    }
+
+    public BigDecimal getCompanyCashPay() {
+        return companyCashPay;
+    }
+
+    public void setCompanyCashPay(BigDecimal companyCashPay) {
+        this.companyCashPay = companyCashPay;
+    }
+
+    public BigDecimal getCompanyApplePay() {
+        return companyApplePay;
+    }
+
+    public void setCompanyApplePay(BigDecimal companyApplePay) {
+        this.companyApplePay = companyApplePay;
+    }
+
+    public BigDecimal getCompanyUnionPay() {
+        return companyUnionPay;
+    }
+
+    public void setCompanyUnionPay(BigDecimal companyUnionPay) {
+        this.companyUnionPay = companyUnionPay;
+    }
+
+    public BigDecimal getCompanyEntrustPay() {
+        return companyEntrustPay;
+    }
+
+    public void setCompanyEntrustPay(BigDecimal companyEntrustPay) {
+        this.companyEntrustPay = companyEntrustPay;
+    }
+
+    public BigDecimal getAddUpCompany() {
+        return addUpCompany;
+    }
+
+    public void setAddUpCompany(BigDecimal addUpCompany) {
+        this.addUpCompany = addUpCompany;
+    }
+
+    public Date getStatTime() {
+        return statTime;
+    }
+
+    public void setStatTime(Date statTime) {
+        this.statTime = statTime;
     }
 
     public Date getCreateTime() {

@@ -2,10 +2,10 @@
 <configuration>
 
     <appender name="containerAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>/data/task/logs/gas.log</File>
+        <File>/Users/zhaohg/boyan/logs/gas.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>/data/task/logs/gas.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>/Users/zhaohg/boyan/logs/gas.log.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
 
         <encoder>
@@ -14,10 +14,10 @@
     </appender>
 
     <appender name="payAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>/data/task/logs/task.log</File>
+        <File>/Users/zhaohg/boyan/logs/task.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>/data/task/logs/task.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>/Users/zhaohg/boyan/logs/task.log.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
 
         <encoder>

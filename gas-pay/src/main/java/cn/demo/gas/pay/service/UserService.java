@@ -1,6 +1,5 @@
 package cn.demo.gas.pay.service;
 
-import cn.demo.gas.pay.dao.mapper.RegionMapper;
 import cn.demo.gas.pay.dao.mapper.UserMapper;
 import cn.demo.gas.pay.from.UserForm;
 import cn.demo.gas.pay.model.Account;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -89,8 +87,8 @@ public class UserService {
         return userMapper.getUserCount(querySubmit);
     }
 
-    public User getUserById(Long id){
-        return userMapper.getUserById(id);
+    public Result getUserById(Long uid){
+        return new Result(userMapper.getUserById(uid));
     }
 
 }

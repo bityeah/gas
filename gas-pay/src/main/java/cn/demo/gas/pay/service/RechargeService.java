@@ -29,7 +29,7 @@ public class RechargeService {
     }
 
 
-    public int getRechargeCount(RechargeForm submit){
+    public long getRechargeCount(RechargeForm submit){
         QuerySubmit querySubmit = new QuerySubmit();
         submit.setParams(querySubmit);
 

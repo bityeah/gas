@@ -1,5 +1,6 @@
 package cn.demo.gas.pay.dao.mapper;
 
+import cn.demo.gas.pay.model.Stat;
 import cn.demo.gas.pay.model.StatData;
 import org.springframework.stereotype.Repository;
 
@@ -13,28 +14,35 @@ import java.util.Map;
 @Repository
 public interface StatMapper {
 
-    void insertStatData(StatData statData);
+    void insertStatData(StatData data);
+
+    void updateStatData(StatData data);
 
     //总交易额
     BigDecimal getAmountTotal();
 
-    //时间段交易额
+    //----条件 昨日 本月 本年 && 个人 商业
+    BigDecimal getUserAmountTotal();
+
+    BigDecimal getCompanyAmountTotal();
+
+    //交易额 条件 周 月 年
     BigDecimal getAmountTotal(Map<String, Object> map);
 
-    //总用户量
-    int getUserTotal();
+    //个人用户总数
+    long getUserTotal();
+
+    //商业用户总数
+    long getCompanyTotal();
+
+    //交易额走势图 条件 周 月 年
+    List<Stat> getStatList(Map<String, Object> map);
 
 
+    //昨日本月本年 现金、支付宝、微信、苹果、银联、委托
+    Stat getStatData(Map<String, Object> map);
 
-    //交易额走势图 条件 周 月
+    Map<String, Object> getStatUserCompany(Map<String, Object> map);
 
-
-    //昨日本月本年 现金、支付宝、微信、苹果、银联、委托、个人、商业交易总额
-    List<StatData> getStatDataList(Map<String, Object> map);
-
-    StatData getStatData(Map<String, Object> map);
-
-
-    //----条件 昨日 本月 本年 && 个人 商业
 
 }

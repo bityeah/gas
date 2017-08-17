@@ -10,8 +10,8 @@
         LIMIT #{start}, #{end}
     </select>
 
-    <select id="getRechargeCount" resultType="cn.demo.gas.pay.model.Recharge" parameterType="cn.demo.gas.pay.model.QuerySubmit">
-        SELECT a.* FROM recharge a
+    <select id="getRechargeCount" resultType="java.lang.Long" parameterType="cn.demo.gas.pay.model.QuerySubmit">
+        SELECT count(1) FROM recharge a
         <include refid="rechargeWhereSql" />
     </select>
 

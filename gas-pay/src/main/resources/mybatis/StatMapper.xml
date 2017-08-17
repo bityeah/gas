@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.demo.gas.pay.dao.mapper.StatMapper">
+
+
+
+    <insert id="insertStatData" parameterType="cn.demo.gas.pay.model.StatData" keyProperty="id" useGeneratedKeys="true">
+        insert into `stat` (
+        userAliPay, userWechatPay, `userCashPay`, userApplePay, userUnionPay, userEntrustPay, addUpUser,
+        companyAliPay,  companyWechatPay, companyCashPay, companyApplePay, companyUnionPay, companyEntrustPay,
+        addUpCompany, statTime, createTime)
+        values (#{userAliPay}, #{userWechatPay}, #{`userCashPay`}, #{userApplePay}, #{userUnionPay}, #{userEntrustPay},
+        #{useraddUpUser}, #{companyAliPay}, #{ companyWechatPay}, #{companyCashPay}, #{companyApplePay},
+        #{companyUnionPay}, #{companyEntrustPay}, #{addUpCompany}, #{statTime}, #{createTime})
+    </insert>
+
+    <select id="getStatList" resultType="cn.demo.gas.pay.model.Stat" parameterType="cn.demo.gas.pay.model.QuerySubmit">
+        select
+        ifnull(sum(userAliPay + companyAliPay), 0) as aliPay,
+        ifnull(sum(userWechatPay + companyWechatPay), 0) as wechatPay,
+        ifnull(sum(userCashPay + companyCashPay), 0) as cashPay,
+        ifnull(sum(userApplePay + companyApplePay), 0) as applePay,
+        ifnull(sum(userUnionPay + companyUnionPay), 0) as unionPay,
+        ifnull(sum(userEntrustPay + companyEntrustPay), 0) as entrustPay,
+        ifnull(sum(addUpUser + addUpCompany), 0) as addUpUser
+        from `stat` where 1 = 1
+    </select>
+
+    <select id="getStatUserAmount" resultType="java.math.BigDecimal">
+        select
+        ifnull(sum(userAliPay + userWechatPay + userCashPay + userApplePay + userUnionPay + userEntrustPay ), 0) as userPay
+        from `stat` where 1 = 1
+    </select>
+
+    <select id="getStatCompanyAmount" resultType="java.math.BigDecimal">
+        select
+        ifnull(sum(companyAliPay + companyWechatPay + companyCashPay + companyApplePay + companyUnionPay + companyEntrustPay), 0) as companyPay
+        from `stat` where 1 = 1
+    </select>
+
+    <select id="getUserTotal" resultType="java.lang.Long">
+        select sum(addUpUser) as total from stat
+    </select>
+
+    <select id="getCompanyTotal" resultType="java.lang.Long">
+        select sum(addUpCompany) as total from stat
+    </select>
+
+
+    <sql id="getUserWhereSql">
+        <if test="startTime != null">
+            and statTime >= #{startTime}
+        </if>
+        <if test="endTime != null">
+            <![CDATA[
+                and statTime < #{endTime}
+            ]]>
+        </if>
+    </sql>
+</mapper>
