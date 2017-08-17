@@ -80,7 +80,7 @@ public class UserService {
         return new Result(list);
     }
 
-    public int getUserCount(UserForm submit){
+    public long getUserCount(UserForm submit){
         QuerySubmit querySubmit = new QuerySubmit();
         submit.setParams(querySubmit);
 

@@ -9,6 +9,7 @@ public class UserForm {
 
     private Long uid;
     private String whereStr;
+    private Integer type;
 
     private int page = 1;
     private int pageSize = 10;
@@ -27,6 +28,14 @@ public class UserForm {
 
     public void setWhereStr(String whereStr) {
         this.whereStr = whereStr;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public int getPage() {
@@ -53,7 +62,7 @@ public class UserForm {
             this.pageSize = 10;
         }
         querySubmit.put("whereStr",whereStr);
-
+        querySubmit.put("type",type);
         querySubmit.setLimit(page, pageSize);
     }
 

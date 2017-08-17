@@ -6,6 +6,7 @@ import cn.demo.gas.pay.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by huangjp on 2017/7/18.
@@ -19,12 +20,12 @@ public interface UserMapper {
 
     Account getAccountById(Long uid);
 
-    int getUserCount(QuerySubmit submit);
+    long getUserCount(QuerySubmit submit);
 
     User getUserById(Long uid);
 
     List<User> getUserList(QuerySubmit submit);
 
-    //TODO 分个人用户还是商业用户 获取昨天的新增用户总数
-    //    int getUserCount()
+    //T分个人用户还是商业用户 获取昨天的新增用户总数
+    long getUserTypeCount(Map<String, Object> map);
 }

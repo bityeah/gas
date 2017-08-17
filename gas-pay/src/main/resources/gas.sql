@@ -35,7 +35,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `stat_data` (
+CREATE TABLE `stat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userAliPay` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '个人支付宝',
   `userWechatPay` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '个人微信',
@@ -51,6 +51,7 @@ CREATE TABLE `stat_data` (
   `companyEntrustPay` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '商业银行委托',
   `addUpUser` int(10) NOT NULL DEFAULT '0' COMMENT '新增个人用户数',
   `addUpCompany` int(10) NOT NULL DEFAULT '0' COMMENT '新增商业用户数',
+  `statTime` datetime NOT NULL,
   `createTime` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

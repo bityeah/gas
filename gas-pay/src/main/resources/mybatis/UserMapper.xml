@@ -22,6 +22,24 @@
         <include refid="getUserWhereSql"/>
     </select>
 
+
+    <select id="getUserTypeCount" resultType="long" parameterType="java.util.Map">
+        select count(1) from `user` where 1 = 1
+        <where >
+            <if test="type > 0">
+                `type` = #{type}
+            </if>
+            <if test="startTime != null">
+                and creatTime >= #{startTime}
+            </if>
+            <if test="endTime != null">
+                <![CDATA[
+                and creatTime < #{endTime}
+            ]]>
+            </if>
+        </where>
+    </select>
+
     <select id="getUserList" resultType="cn.demo.gas.pay.model.User" parameterType="cn.demo.gas.pay.model.QuerySubmit">
         select * from `user` where 1 = 1
         <include refid="getUserWhereSql"/>

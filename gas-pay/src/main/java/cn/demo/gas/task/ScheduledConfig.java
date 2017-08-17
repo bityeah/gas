@@ -1,6 +1,8 @@
 package cn.demo.gas.task;
 
+import cn.demo.gas.pay.service.StatService;
 import cn.demo.gas.pay.util.DateUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +15,8 @@ import java.util.Date;
 @Component
 public class ScheduledConfig {
 
-//    @Autowired
-//    private StatTask statTask;
+    @Autowired
+    private StatService statService;
 
     public final static long SECOND = 1 * 1000;
 
@@ -44,7 +46,7 @@ public class ScheduledConfig {
             Date initData = DateUtil.addSubDay(initial.getTime(), i - 1);
             Date nextDate = DateUtil.addSubDay(initial.getTime(), i);
             //统计数据
-            StatDataStats(initData, nextDate);
+//            statService.insertStatData(initData, nextDate);
 
             initialYear = DateUtil.getYear(nextDate.getTime());
             initialMonth = DateUtil.getMonth(nextDate.getTime());
@@ -53,25 +55,22 @@ public class ScheduledConfig {
         }
 
         dateMark = initial.getTime();
-        System.out.println(DateUtil.format(dateMark,"yyyy-MM-dd"));
+        System.out.println(DateUtil.format(dateMark, "yyyy-MM-dd"));
     }
 
-    public void StatDataStats(Date startTime, Date endTime){
-        System.out.println("start="+ DateUtil.format(startTime,"yyyy-MM-dd") +"     end="+ DateUtil.format(endTime,"yyyy-MM-dd") );
-    }
 
     /**
-    //固定等待时间 @Scheduled(fixedDelay = 时间间隔 )
-    @Scheduled(fixedDelay = SECOND * 2)
-    public void fixedDelayJob() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(2);
-        System.out.println("[FixedDelayJob Execute]" + new Date());
-    }
+     //固定等待时间 @Scheduled(fixedDelay = 时间间隔 )
+     @Scheduled(fixedDelay = SECOND * 2)
+     public void fixedDelayJob() throws InterruptedException {
+     TimeUnit.SECONDS.sleep(2);
+     System.out.println("[FixedDelayJob Execute]" + new Date());
+     }
 
-    //固定间隔时间 @Scheduled(fixedRate = 时间间隔 )
-    @Scheduled(fixedRate = SECOND * 4)
-    public void fixedRateJob() {
-        System.out.println("[FixedRateJob Execute]" + new Date());
-    }
-    */
+     //固定间隔时间 @Scheduled(fixedRate = 时间间隔 )
+     @Scheduled(fixedRate = SECOND * 4)
+     public void fixedRateJob() {
+     System.out.println("[FixedRateJob Execute]" + new Date());
+     }
+     */
 }

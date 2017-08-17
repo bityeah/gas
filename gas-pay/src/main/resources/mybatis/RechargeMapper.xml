@@ -40,4 +40,24 @@
         </where>
     </sql>
 
+    <select id="getRechargeTotalAmount" resultType="java.math.BigDecimal" parameterType="java.util.Map">
+        select ifnull(sum(a.amount), 0) as total from recharge a left join `user` b on a.uid = b.id
+      <where>
+          <if test="type > 0">
+              b.type = #{type}
+          </if>
+          <if test="source > 0">
+              and a.source = #{source}
+          </if>
+          <if test="startTime != null">
+              and a.payTime >= #{startTime}
+          </if>
+          <if test="endTime != null">
+              <![CDATA[
+                and a.payTime < #{endTime}
+            ]]>
+          </if>
+      </where>
+    </select>
+
 </mapper>

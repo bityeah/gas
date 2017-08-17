@@ -18,7 +18,7 @@ public class StatData {
     private BigDecimal userApplePay;    //苹果
     private BigDecimal userUnionPay;    //银联
     private BigDecimal userEntrustPay;  //银行委托
-    private BigDecimal addUpUser;       //新增用户数
+    private Long addUpUser;       //新增用户数
 
     private BigDecimal companyAliPay;      //支付宝
     private BigDecimal companyWechatPay;   //微信
@@ -26,7 +26,7 @@ public class StatData {
     private BigDecimal companyApplePay;    //苹果
     private BigDecimal companyUnionPay;    //银联
     private BigDecimal companyEntrustPay;  //银行委托
-    private BigDecimal addUpCompany;        //新增用户数
+    private Long addUpCompany;        //新增用户数
 
     private Date statTime;                 //统计这个日期的数据
     private Date createTime;                //创建时间
@@ -112,11 +112,11 @@ public class StatData {
         this.userEntrustPay = userEntrustPay;
     }
 
-    public BigDecimal getAddUpUser() {
+    public Long getAddUpUser() {
         return addUpUser;
     }
 
-    public void setAddUpUser(BigDecimal addUpUser) {
+    public void setAddUpUser(Long addUpUser) {
         this.addUpUser = addUpUser;
     }
 
@@ -168,11 +168,11 @@ public class StatData {
         this.companyEntrustPay = companyEntrustPay;
     }
 
-    public BigDecimal getAddUpCompany() {
+    public Long getAddUpCompany() {
         return addUpCompany;
     }
 
-    public void setAddUpCompany(BigDecimal addUpCompany) {
+    public void setAddUpCompany(Long addUpCompany) {
         this.addUpCompany = addUpCompany;
     }
 
